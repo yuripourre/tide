@@ -4,6 +4,10 @@ import br.com.tide.ActivePlayer;
 import br.com.tide.PlayerState;
 import br.com.tide.input.ControllerListener;
 
+/**
+ * Mainly used in TopView games
+ * @param <T> - Your custom player data
+ */
 public class ActionPlayer<T> extends ActivePlayer<T> implements ControllerListener {
 
 	protected double dx = 0;
@@ -67,7 +71,7 @@ public class ActionPlayer<T> extends ActivePlayer<T> implements ControllerListen
 		
 		states.add(PlayerState.TURN_LEFT);
 	}
-
+	
 	public void stopTurnLeft() {
 		states.remove(PlayerState.TURN_LEFT);
 		
@@ -142,19 +146,14 @@ public class ActionPlayer<T> extends ActivePlayer<T> implements ControllerListen
 	
 	private void moveBackward() {
 		double ang = 180+angle+startAngle;
-		move(ang, backWalkSpeed);		
+		move(ang, backWalkSpeed);
 	}
 	
 	public void undoMoveBackward() {
 		double ang = 180+angle+startAngle;
 		move(ang, -backWalkSpeed);
 	}
-	
-	public void stopWalk() {
-		states.remove(PlayerState.WALK_FORWARD);
-		states.remove(PlayerState.WALK_BACKWARD);
-	}
-	
+		
 	public boolean isWalking() {
 		return states.contains(PlayerState.WALK_FORWARD)||states.contains(PlayerState.WALK_BACKWARD);
 	}
@@ -325,6 +324,10 @@ public class ActionPlayer<T> extends ActivePlayer<T> implements ControllerListen
 		this.listener = listener;
 		
 		hasListener = (null == listener);
+	}
+
+	public void updateAngle() {
+		
 	}
 	
 }

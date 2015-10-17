@@ -156,18 +156,4 @@ public class MeshNavigationExample extends Application {
 		
 	}
 	
-	@Override
-	public GUIEvent updateMouse(PointerEvent event) {
-				
-		// TODO Auto-generated method stub
-		return null;
-	}
-		
-	@Override
-	public GUIEvent updateKeyboard(KeyEvent event) {
-		
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

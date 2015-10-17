@@ -15,7 +15,7 @@ public class ArcadePlayerListenerTest {
 	
 	@Before
 	public void setUp() {
-		listener = new TestPlayerListener();		
+		listener = new TestPlayerListener();
 		player = new TestPlayer(listener);
 	}
 	
