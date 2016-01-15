@@ -1,8 +1,9 @@
 package br.com.tide.action.player;
 
-
 public interface ActionPlayerListener<T> {
 
+	public void onFinishAttack(ActionPlayer<T> player);
+	
 	public void onTurnLeft(ActionPlayer<T> player);
 	
 	public void onTurnRight(ActionPlayer<T> player);

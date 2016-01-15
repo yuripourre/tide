@@ -1,7 +1,7 @@
 package br.com.tide.platform.player;
 
-import br.com.tide.ActivePlayer;
 import br.com.tide.PlayerState;
+import br.com.tide.common.ActivePlayer;
 import br.com.tide.input.ControllerListener;
 
 public class PlatformPlayer<T> extends ActivePlayer<T> implements ControllerListener {

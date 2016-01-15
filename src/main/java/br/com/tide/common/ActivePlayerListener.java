@@ -1,9 +1,11 @@
-package br.com.tide;
+package br.com.tide.common;
 
 
 public interface ActivePlayerListener<T> {
 
 	public void onAttack();
+	
+	public void onFinishAttack();
 	
 	public void onStopAttack();
 	

@@ -1,7 +1,7 @@
 package br.com.tide.action.player;
 
-import br.com.tide.ActivePlayer;
 import br.com.tide.PlayerState;
+import br.com.tide.common.ActivePlayer;
 import br.com.tide.input.ControllerListener;
 
 /**
@@ -61,7 +61,6 @@ public class ActionPlayer<T> extends ActivePlayer<T> implements ControllerListen
 		if(hasState(PlayerState.WALK_BACKWARD)) {
 			moveBackward();
 		}
-		
 	}
 	
 	public void turnLeft() {
@@ -328,6 +327,11 @@ public class ActionPlayer<T> extends ActivePlayer<T> implements ControllerListen
 
 	public void updateAngle() {
 		
+	}
+	
+	@Override
+	public void onFinishAttack() {
+		listener.onFinishAttack(this);
 	}
 	
 }

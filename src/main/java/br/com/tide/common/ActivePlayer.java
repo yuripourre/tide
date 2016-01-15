@@ -1,24 +1,29 @@
-package br.com.tide;
+package br.com.tide.common;
 
 import br.com.etyllica.core.Updatable;
+import br.com.tide.Player;
+import br.com.tide.PlayerState;
 
 public class ActivePlayer<T> extends Player<T> implements Updatable, ActivePlayerListener<T> {
 	
 	protected float health = 100;
-	
+	protected int walkSpeed = 5;
 	protected int currentSpeed = 5;
 	
-	protected long wasHit = 0;
-	
+	protected long hitStart = 0;
 	protected long hitDelay = 200;
 	
-	protected long attackDelay = 600;
+	protected long attackStart = 0;
+	protected long attackDelay = 0;
 	
 	public void update(long now) {
-
 		if(isBeignHit()) {
-			if(now-wasHit>hitDelay) {
+			if(now-hitStart>hitDelay) {
 				this.stand();
+			}
+		} else if(isAttacking()) {
+			if(now-attackStart>attackDelay) {
+				onFinishAttack();
 			}
 		}
 	}
@@ -30,9 +35,15 @@ public class ActivePlayer<T> extends Player<T> implements Updatable, ActivePlaye
 	}
 	
 	public void attack() {
+		attackStart = System.currentTimeMillis();
 		states.clear();
 		states.add(PlayerState.ATTACK);
 		onAttack();
+	}
+	
+	public void attack(long delay) {
+		attack();
+		this.attackDelay = delay;
 	}
 	
 	public void specialAttack() {
@@ -46,7 +57,7 @@ public class ActivePlayer<T> extends Player<T> implements Updatable, ActivePlaye
 		states.add(PlayerState.BEING_HIT);
 		onBeignHit(who);
 
-		wasHit = when;
+		hitStart = when;
 	}
 
 	public void stopAttack() {
@@ -79,6 +90,11 @@ public class ActivePlayer<T> extends Player<T> implements Updatable, ActivePlaye
 	//Listener Methods
 	public void onAttack() {
 		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void onFinishAttack() {
+		stopAttack();
 	}
 
 	public void onStopAttack() {
