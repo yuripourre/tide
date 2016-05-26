@@ -1,9 +1,9 @@
 package examples;
 
-import br.com.etyllica.EtyllicaFrame;
+import br.com.etyllica.Etyllica;
 import br.com.etyllica.core.context.Application;
 
-public class TideExamples extends EtyllicaFrame {
+public class TideExamples extends Etyllica {
 	private static final long serialVersionUID = 1L;
 
 	public TideExamples() {

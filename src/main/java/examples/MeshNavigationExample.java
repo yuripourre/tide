@@ -7,7 +7,7 @@ import br.com.etyllica.core.context.Application;
 import br.com.etyllica.core.event.GUIEvent;
 import br.com.etyllica.core.event.KeyEvent;
 import br.com.etyllica.core.event.PointerEvent;
-import br.com.etyllica.core.graphics.Graphic;
+import br.com.etyllica.core.graphics.Graphics;
 import br.com.etyllica.linear.graph.GenericEdge;
 import br.com.etyllica.linear.graph.Node;
 import br.com.tide.ai.pathfind.NavigationMesh;
@@ -65,15 +65,15 @@ public class MeshNavigationExample extends Application {
 	}
 	
 	@Override
-	public void draw(Graphic g) {
+	public void draw(Graphics g) {
 		drawNode(g, root);
 	}
 	
-	private void drawLeaf(Graphic g, Node<PolygonalData> node) {
+	private void drawLeaf(Graphics g, Node<PolygonalData> node) {
 		g.fillCircle(node.getPoint(), 5);
 	}
 	
-	private void drawNode(Graphic g, Node<PolygonalData> node) {
+	private void drawNode(Graphics g, Node<PolygonalData> node) {
 						
 		//Draw Children
 		drawEdges(g, node);
@@ -85,7 +85,7 @@ public class MeshNavigationExample extends Application {
 		node.getData().getPolygon().draw(g);
 	}
 		
-	private void drawEdges(Graphic g, Node<PolygonalData> node) {
+	private void drawEdges(Graphics g, Node<PolygonalData> node) {
 		
 		List<GenericEdge<PolygonalData>> edges = graph.getEdges(node);
 		
